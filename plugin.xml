@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-fb-analytics" version="0.0.1" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>FirebaseAnalytics</name>
+    <js-module name="FirebaseAnalytics" src="www/FirebaseAnalytics.js">
+        <clobbers target="cordova.plugins.FirebaseAnalytics" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="FirebaseAnalytics">
+                <param name="ios-package" value="FirebaseAnalytics" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/FirebaseAnalytics.m" />
+        <source-file src="src/ios/Firebase.h" />
+        <framework src="src/ios/Firebase_Analytics/FirebaseAnalytics.framework" custom="true" />
+        <framework src="src/ios/Firebase_Analytics/FirebaseInstanceID.framework" custom="true" />
+        <framework src="src/ios/Firebase_Analytics/GoogleInterchangeUtilities.framework" custom="true" />
+        <framework src="src/ios/Firebase_Analytics/GoogleSymbolUtilities.framework" custom="true" />
+        <framework src="src/ios/Firebase_Analytics/GoogleUtilities.framework" custom="true" />
+    </platform>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="FirebaseAnalytics">
+                <param name="android-package" value="cordova-plugin-fb-analytics.FirebaseAnalytics" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/FirebaseAnalytics.java" target-dir="src/cordova-plugin-fb-analytics/FirebaseAnalytics" />
+    </platform>
+</plugin>
